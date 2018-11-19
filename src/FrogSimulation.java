@@ -7,20 +7,33 @@ public class FrogSimulation {
         maxHops = numHops;
     }
 
+    //Jumps -10~20
     private int hopDistance(){
-        return (int)(Math.random()*31)-15;
+        return (int)(Math.random()*31)-10;
     }
 
     public boolean simulate(){
-        int current = goalDistance;
+        String total = "Goal: " + goalDistance + " Hops: ";
+        int current = 0;
         int hops = maxHops;
-        while(goalDistance>=current&&hops!=0){
-            current-=hopDistance();
+        while(current>-1&&hops!=0){
+            int temp = hopDistance();
+            total+=temp + " ";
+
+            current+=temp;
             hops--;
-            if(current<=0){
+            if(current>=goalDistance){
+                total+="Success Final Distance: " + current;
+                System.out.println(total);
                 return true;
             }
         }
+        if(current>-1){
+            total+="Failed Final Distance: " + current;
+        } else {
+            total+="Failed Reached Negative Distance";
+        }
+        System.out.println(total);
         return false;
     }
 

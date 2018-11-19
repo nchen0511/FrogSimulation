@@ -8,7 +8,7 @@ public class FrogSimulation {
     }
 
     private int hopDistance(){
-        return (int)(Math.random()*11);
+        return (int)(Math.random()*31)-15;
     }
 
     public boolean simulate(){
